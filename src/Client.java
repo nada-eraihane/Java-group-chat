@@ -33,8 +33,13 @@ public class Client {
                 bufferedWriter.flush();
             }
         } catch (IOException e) {
+<<<<<<< HEAD
             closeEverything(socket, bufferedReader, bufferedWriter);
         }
+=======
+        }
+        closeEverything(socket, bufferedReader, bufferedWriter);
+>>>>>>> dc9b1ee (Implement basic client functionality with messaging)
     }
 
     public void listenForMessage() {
@@ -42,6 +47,10 @@ public class Client {
             @Override
             public void run() {
                 String msgFromGroupChat;
+<<<<<<< HEAD
+=======
+
+>>>>>>> dc9b1ee (Implement basic client functionality with messaging)
                 while (socket.isConnected()) {
                     try {
                         msgFromGroupChat = bufferedReader.readLine();
@@ -55,7 +64,11 @@ public class Client {
         }).start();
     }
 
+<<<<<<< HEAD
     public void closeEverything(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter) {
+=======
+    private void closeEverything(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter) {
+>>>>>>> dc9b1ee (Implement basic client functionality with messaging)
         try {
             if (bufferedReader != null) bufferedReader.close();
             if (bufferedWriter != null) bufferedWriter.close();
@@ -64,6 +77,7 @@ public class Client {
             e.printStackTrace();
         }
     }
+<<<<<<< HEAD
 
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
@@ -87,3 +101,6 @@ public class Client {
         client.sendMessage();
     }
 }
+=======
+}
+>>>>>>> dc9b1ee (Implement basic client functionality with messaging)
