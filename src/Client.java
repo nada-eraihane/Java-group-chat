@@ -34,12 +34,21 @@ public class Client {
             }
         } catch (IOException e) {
 <<<<<<< HEAD
+<<<<<<< HEAD
             closeEverything(socket, bufferedReader, bufferedWriter);
         }
 =======
         }
         closeEverything(socket, bufferedReader, bufferedWriter);
 >>>>>>> dc9b1ee (Implement basic client functionality with messaging)
+=======
+        }
+        closeEverything(socket, bufferedReader, bufferedWriter);
+=======
+            closeEverything(socket, bufferedReader, bufferedWriter);
+        }
+>>>>>>> e268635 (fixed code)
+>>>>>>> 26ed3cf (fixed files)
     }
 
     public void listenForMessage() {
@@ -48,9 +57,15 @@ public class Client {
             public void run() {
                 String msgFromGroupChat;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> dc9b1ee (Implement basic client functionality with messaging)
+=======
+
+=======
+>>>>>>> e268635 (fixed code)
+>>>>>>> 26ed3cf (fixed files)
                 while (socket.isConnected()) {
                     try {
                         msgFromGroupChat = bufferedReader.readLine();
@@ -65,10 +80,17 @@ public class Client {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     public void closeEverything(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter) {
 =======
     private void closeEverything(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter) {
 >>>>>>> dc9b1ee (Implement basic client functionality with messaging)
+=======
+    private void closeEverything(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter) {
+=======
+    public void closeEverything(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter) {
+>>>>>>> e268635 (fixed code)
+>>>>>>> 26ed3cf (fixed files)
         try {
             if (bufferedReader != null) bufferedReader.close();
             if (bufferedWriter != null) bufferedWriter.close();
@@ -77,6 +99,7 @@ public class Client {
             e.printStackTrace();
         }
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     public static void main(String[] args) throws IOException {
@@ -104,3 +127,31 @@ public class Client {
 =======
 }
 >>>>>>> dc9b1ee (Implement basic client functionality with messaging)
+=======
+}
+=======
+
+    public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter your username for the group chat: ");
+        String username = scanner.nextLine();
+        
+        System.out.print("Enter server IP address (or press Enter for localhost): ");
+        String serverIP = scanner.nextLine();
+        if (serverIP.trim().isEmpty()) {
+            serverIP = "localhost";
+        }
+        
+        System.out.print("Enter server port (or press Enter for default 1234): ");
+        String portInput = scanner.nextLine();
+        int port = portInput.trim().isEmpty() ? 1234 : Integer.parseInt(portInput);
+        
+        Socket socket = new Socket(serverIP, port);
+        Client client = new Client(socket, username);
+        client.listenForMessage();
+        client.sendMessage();
+    }
+}
+>>>>>>> e268635 (fixed code)
+>>>>>>> 26ed3cf (fixed files)
