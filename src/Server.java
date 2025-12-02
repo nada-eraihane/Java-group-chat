@@ -3,7 +3,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
-
     private ServerSocket serverSocket;
 
     public Server(ServerSocket serverSocket) {
@@ -11,24 +10,18 @@ public class Server {
     }
 
     public void startServer() {
-
         try {
-
+            System.out.println("Server is running and waiting for clients...");
             while (!serverSocket.isClosed()) {
-
                 Socket socket = serverSocket.accept();
                 System.out.println("A new client has connected!");
                 ClientHandler clientHandler = new ClientHandler(socket);
-
                 Thread thread = new Thread(clientHandler);
                 thread.start();
-
             }
-
         } catch (IOException e) {
-
+            closeServerSocket();
         }
-
     }
 
     public void closeServerSocket() {
@@ -46,5 +39,4 @@ public class Server {
         Server server = new Server(serverSocket);
         server.startServer();
     }
-
 }
